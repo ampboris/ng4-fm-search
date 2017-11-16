@@ -78,3 +78,25 @@ Production Process Manager for Node.js apps
 
                 To go further checkout:
                 http://pm2.io
+
+
+On Nodejs Express API site, header need to set!
+
+const cors = require('cors');
+
+// CORS Header config
+var corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "allowedHeaders": "*",
+    "exposedHeaders": ["x-auth"],
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204,
+  };
+
+app.use(cors(corsOptions));
+
+app.use(function(req, res, next) {
+  res.setHeader('x-auth', '20171116')
+  next();
+});
